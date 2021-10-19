@@ -6,7 +6,7 @@ function help() {
 }
 
 function build() {
-    docker build -t $HUB:$TAG .
+    docker build  --rm -t $HUB:$TAG .
 }
 
 function start() {
@@ -53,7 +53,7 @@ function genCert() {
     # step 3: generate cert
     /home/admin/.acme.sh/acme.sh  --installcert  -d  ${DOMAIN}  --log \
         --key-file   ./v2ray.key \
-        --fullchain-file ./v2ray.cer 
+        --fullchain-file ./v2ray.cer
 }
 
 while getopts ":h:t:d:" opt; do
